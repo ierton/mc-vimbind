@@ -1,0 +1,37 @@
+About
+-----
+mc-vimbind is a clone of Midnight Commander
+
+http://midnight-commander.org
+
+slightly patched to support VI/VIM - like navigation.
+
+Setup
+-----
+Follow general install steps, then run mc with --vi-style argument. It is also possible to safely map single-keys to various actions. For example, here is my ~/.mc/keymap:
+
+    [main]
+    Quit=f10;q
+    Find=alt-f7;ctrl-f
+    ShowHidden=alt-dot;.
+    Copy=f5;c
+    Edit=f4;i
+    Delete=f8;d
+
+    [panel]
+    Up=up;k
+    Down=down;j
+    Left=left;h;x
+    Right=right;l;o
+    PageUp=pgup; ctrl-u
+    PageDown=pgdn; ctrl-d
+    Mark=v
+    HistoryPrev=ctrl-o
+
+Note additional mappings for 'o','i','d','c','.' keys
+
+Problems
+--------
+The idea was that if user presses ':' key, mc should enable command line editing (somewhat like vi does). This was intended to disable all single-key mappings until next Enter. Unfortunately, looks like 'Up' and 'Down' actions are hardcoded somewhere and can't be disabled, so ':' mode should be considered as broken.
+
+Sergey

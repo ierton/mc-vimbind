@@ -283,9 +283,18 @@ command_callback (Widget * w, widget_msg_t msg, int parm)
         return MSG_NOT_HANDLED;
 
     case WIDGET_KEY:
+        /* In vi mode we pass keys to action handlers */
+        if(cmd->vi_skip) {
+            if (parm == ':')
+                cmd->vi_skip = 0;
+            return MSG_NOT_HANDLED;
+        }
+
         /* Special case: we handle the enter key */
         if (parm == '\n')
         {
+            if(mc_global.vi_style)
+                cmd->vi_skip = 1;
             return enter (cmd);
         }
         /* fall through */
@@ -387,6 +396,9 @@ command_new (int y, int x, int cols)
 
     /* Add our hooks */
     cmd->widget.callback = command_callback;
+
+    if(mc_global.vi_style)
+        cmd->vi_skip = 1;
 
     return cmd;
 }

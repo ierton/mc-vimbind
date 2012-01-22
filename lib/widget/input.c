@@ -981,6 +981,7 @@ input_new (int y, int x, const int *input_colors, int width, const char *def_tex
     in->history_name = NULL;
     if ((histname != NULL) && (*histname != '\0'))
         in->history_name = g_strdup (histname);
+    in->vi_skip = 0;
 
     /* history will be loaded later */
 
@@ -1016,6 +1017,9 @@ input_callback (Widget * w, widget_msg_t msg, int parm)
         /* Keys we want others to handle */
         if (parm == KEY_UP || parm == KEY_DOWN || parm == ESC_CHAR
             || parm == KEY_F (10) || parm == '\n')
+            return MSG_NOT_HANDLED;
+
+        if(in->vi_skip)
             return MSG_NOT_HANDLED;
 
         /* When pasting multiline text, insert literal Enter */

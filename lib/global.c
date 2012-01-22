@@ -71,6 +71,8 @@ mc_global_t mc_global = {
 
     .is_right = FALSE,
 
+    .vi_style = FALSE,
+
     .skin = NULL,
 
     .widget =
