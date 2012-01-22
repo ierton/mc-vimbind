@@ -185,13 +185,6 @@ static const GOptionEntry argument_main_table[] = {
      "<file>"},
 
     {
-     "vi-style", 0, G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE,
-     &mc_global.vi_style,
-     N_("Enables navigation in vi-style (hjkl)"),
-     NULL
-    },
-
-    {
      NULL, '\0', 0, 0, NULL, NULL, NULL /* Complete struct initialization */
     }
     /* *INDENT-ON* */

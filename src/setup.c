@@ -251,6 +251,7 @@ static const struct
     { "safe_delete", &safe_delete },
     { "mouse_repeat_rate", &mou_auto_repeat },
     { "double_click_speed", &double_click_speed },
+    { "vi_style", &mc_global.vi_style },
 #ifndef HAVE_CHARSET
     { "eight_bit_clean", &mc_global.eight_bit_clean },
     { "full_eight_bits", &mc_global.full_eight_bits },
