@@ -161,7 +161,7 @@ static const global_keymap_ini_t default_main_x_keymap[] = {
 };
 
 /* panel */
-static global_keymap_ini_t default_panel_keymap[] = {
+static const global_keymap_ini_t default_panel_keymap[] = {
     {"PanelOtherCd", "alt-o"},
     {"PanelOtherCdLink", "alt-l"},
     {"CopySingle", "f15"},
@@ -567,19 +567,6 @@ create_default_keymap (void)
     mc_config_t *keymap;
 
     keymap = mc_config_init (NULL);
-
-
-    if(mc_global.vi_style) {
-        int i;
-        for(i=0; default_panel_keymap[i].key!=NULL; i++) {
-            global_keymap_ini_t *bind = &default_panel_keymap[i];
-            remap_key(bind, "Up",    "up; ctrl-p; k");
-            remap_key(bind, "Down",  "down; ctrl-n; j");
-            remap_key(bind, "Left",  "left; h");
-            remap_key(bind, "Right", "right; l");
-            remap_key(bind, "Search", "ctrl-s; alt-s; /");
-        }
-    }
 
     create_default_keymap_section (keymap, KEYMAP_SECTION_MAIN, default_main_keymap);
     create_default_keymap_section (keymap, KEYMAP_SECTION_MAIN_EXT, default_main_x_keymap);
