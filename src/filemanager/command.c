@@ -45,6 +45,7 @@
 #include "src/main.h"           /* do_cd */
 #include "src/subshell.h"       /* SUBSHELL_EXIT */
 #include "src/execute.h"        /* shell_execute */
+#include "src/setup.h"          /* vi_style */
 
 #include "midnight.h"           /* current_panel */
 #include "layout.h"             /* for command_prompt variable */
@@ -293,7 +294,7 @@ command_callback (Widget * w, widget_msg_t msg, int parm)
         /* Special case: we handle the enter key */
         if (parm == '\n')
         {
-            if(mc_global.vi_style)
+            if(vi_style)
                 cmd->vi_skip = 1;
             return enter (cmd);
         }
@@ -397,7 +398,7 @@ command_new (int y, int x, int cols)
     /* Add our hooks */
     cmd->widget.callback = command_callback;
 
-    if(mc_global.vi_style)
+    if(vi_style)
         cmd->vi_skip = 1;
 
     return cmd;

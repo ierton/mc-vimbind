@@ -203,9 +203,6 @@ typedef struct
     /* Set if the command is being run from the "Right" menu */
     gboolean is_right;          /* If the selected menu was the right */
 
-    /* Enable vi-like navigation - 'hjkl' to move cursor, ':' to edit cmdline */
-    gboolean vi_style;
-
     /* Use the specified skin */
     char *skin;
 
