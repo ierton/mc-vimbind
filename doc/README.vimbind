@@ -8,30 +8,32 @@ slightly patched to support VI/VIM - like navigation.
 
 Setup
 -----
-Follow general install steps, then run mc with --vi-style argument. It is also possible to safely map single-keys to various actions. For example, here is my ~/.mc/keymap:
+Follow general install steps, then run mc with vi_style option enabled (edit file ~/.config/mc/ini). It is now possible to map single-keys in [main] section. For example, here is my ~/.config/mc/keymap:
 
-    [main]
-    Quit=f10;q
-    Find=alt-f7;ctrl-f
-    ShowHidden=alt-dot;.
-    Copy=f5;c
-    Edit=f4;i
-    Delete=f8;d
+	[main]
+	Quit=f10;q
+	Find=alt-f7;ctrl-f;
+	ShowHidden=alt-dot;.
+	Copy=f5;c
+	Delete=f8;d
+	Edit=f4;i
 
-    [panel]
-    Up=up;k
-    Down=down;j
-    Left=left;h;x
-    Right=right;l;o
-    PageUp=pgup; ctrl-u
-    PageDown=pgdn; ctrl-d
-    Mark=v
-    HistoryPrev=ctrl-o
+	[panel]
+	Up=up;k
+	Down=down;j
+	Enter=right;l;o;enter
+	CdParent=left;h;x
+	PageUp=pgup;ctrl-u
+	PageDown=pgdn;ctrl-d
+	Mark=v
+	HistoryPrev=ctrl-o
+	Search=ctrl-s;alt-s;/
 
-Note additional mappings for 'o','i','d','c','.' keys
+
+Note additional mappings for 'o','i','d','c','.' keys. Note, that keymap file may be called either keymap or mc.keymap. Look into ~/.config/mc/ini to figure out which one is correct.
 
 Problems
 --------
-The idea was that if user presses ':' key, mc should enable command line editing (somewhat like vi does). This was intended to disable all single-key mappings until next Enter. Unfortunately, looks like 'Up' and 'Down' actions are hardcoded somewhere and can't be disabled, so ':' mode should be considered as broken.
+The idea was that if user presses ':' key, mc should enable command line editing (somewhat like vi does). This was intended to disable all single-key mappings until next Enter. Unfortunately, looks like I missed the logic of combining [main] and [panel] mappings, so ':' mode should be considered as broken.
 
 Sergey
